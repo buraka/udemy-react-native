@@ -6,24 +6,35 @@ import { Input } from './common';
 class LoginForm extends Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    error: ''
   }
 
   onButtonClicked() {
     const { email, password } = this.state;
-
+    this.setState({
+      error: ''
+    });
     firebase.auth().signInWithEmailAndPassword(email, password)
       .catch((err) => {
-        debugger;
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .catch((error) => {
-            debugger;
             console.log('hata'); //TODO
+            this.setState({
+              error: 'Authentication failed'
+            });
           });
       });
   }
 
   render() {
+    const { error } = this.state;
+
+    const errorMsg = error ? (
+      <Text style={styles.errorText}>
+        {error}
+      </Text>
+    ) : null
     return (
       <View style={{ padding: 30 }}>
         <View>
@@ -45,6 +56,7 @@ class LoginForm extends Component {
                  secureTextEntry
                  value={this.state.password}/>
         </View>
+        {errorMsg}
         <View style={styles.buttonWrapper}>
           <Button onPress={this.onButtonClicked.bind(this)} color='#E87B79' title='Login'/>
         </View>
@@ -61,6 +73,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 18,
     backgroundColor: '#fff'
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 20,
+    paddingTop: 5,
+    alignSelf: 'center'
   }
 })
 
