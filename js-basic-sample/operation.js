@@ -84,3 +84,10 @@ switch (day) {
   default:
     console.log('hata');
 }
+
+const t = 32;
+
+// condition ? true : false;
+
+t > 30 ? console.log('t 30\'dan buyuktur.')
+       : console.log('t 30\'dan kucuktur.');
