@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import firebase from 'firebase';
 import Banner from './components/banner';
 import LoginForm from './components/loginForm';
-import { Spinner } from './components/common';
+import { Spinner, MyButton } from './components/common';
 
 class App extends Component {
   state = {
@@ -35,9 +35,10 @@ class App extends Component {
     switch(loggedIn) {
       case true:
         return (
-          <Button onPress={() => firebase.auth().signOut()}
-                  color='#E87B79'
-                  title='Logout'/>
+          <MyButton spinner={false}
+                    onPress={() => firebase.auth().signOut()}
+                    color='#E87B79'
+                    title='Logout'/>
         )
       case false:
         return (
