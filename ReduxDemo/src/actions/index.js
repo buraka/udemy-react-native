@@ -1,13 +1,16 @@
+export const SELECT_BOOK = 'select_book';
+export const DESELECT_BOOK = 'deselect_book';
+
 export const selectBook = (book) => {
   return {
-    type: 'select_book',
+    type: SELECT_BOOK,
     payload: book
   }
 }
 
 export const deselectBook = () => {
   return {
-    type: 'deselect_book',
+    type: DESELECT_BOOK,
     payload: {}
   }
 }
