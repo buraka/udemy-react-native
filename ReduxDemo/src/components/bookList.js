@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
+import BookItem from './bookItem';
 
 class BookList extends Component {
+
+  renderItem({item}) {
+    return (
+      <BookItem book={item} />
+    )
+  }
 
   render() {
     const { books } = this.props;
@@ -10,7 +17,7 @@ class BookList extends Component {
       <View>
         <FlatList
           data={books}
-          renderItem={({item}) => <Text>{item.title}</Text>}
+          renderItem={this.renderItem}
           keyExtractor={(item) => item.isbn}
         />
       </View>
