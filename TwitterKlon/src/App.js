@@ -1,11 +1,19 @@
- import React, {Component} from 'react';
-import { View } from 'react-native';
+import React, {Component} from 'react';
+import { View, Text } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
 
 export default class App extends Component {
   render() {
     return (
-      <View >
-      </View>
+      <Provider store={createStore(reducers)}>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+          <Text>
+            Merhaba!
+          </Text>
+        </View>
+      </Provider>
     );
   }
 }
