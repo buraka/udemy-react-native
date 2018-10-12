@@ -31,7 +31,7 @@ class LoginForm extends Component {
     ) : null;
 
     return (
-      <View style={{ padding: 30 }}>
+      <View style={{ flex: 1, justifyContent: 'center', padding: 30 }}>
         <View>
           <Input text='Email' inputPlaceHolder='Enter Email'
                  onChangeText={this.onEmailChanged.bind(this)}
