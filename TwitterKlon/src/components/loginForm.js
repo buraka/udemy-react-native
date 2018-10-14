@@ -31,7 +31,7 @@ class LoginForm extends Component {
     ) : null;
 
     return (
-      <View style={{ flex: 1, justifyContent: 'center', padding: 30 }}>
+      <View style={styles.loginContainer}>
         <View>
           <Input text='Email' inputPlaceHolder='Enter Email'
                  onChangeText={this.onEmailChanged.bind(this)}
@@ -54,12 +54,10 @@ class LoginForm extends Component {
 }
 
 const styles = StyleSheet.create({
-  buttonWrapper: {
-    marginTop: 20,
-    height: 49,
-    borderRadius: 10,
+  loginContainer: {
+    flex: 1,
     justifyContent: 'center',
-    fontSize: 18,
+    padding: 30,
     backgroundColor: '#fff'
   },
   errorText: {
