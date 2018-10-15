@@ -32,7 +32,6 @@ class UpdateTweet extends Component {
         ]
       )
     }
-
   }
 
   updateTweet() {

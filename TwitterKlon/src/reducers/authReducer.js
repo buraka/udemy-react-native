@@ -3,7 +3,9 @@ import {
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN,
-  LOGIN_USER_FAILED
+  LOGIN_USER_FAILED,
+  LOGGED_IN,
+  NOT_LOGGED_IN
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -11,7 +13,8 @@ const INITIAL_STATE = {
     password: '',
     user: {},
     loading: false,
-    error: ''
+    error: '',
+    fullLoading: true
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -26,6 +29,10 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true, error: '' }
     case LOGIN_USER_FAILED:
       return { ...state, loading: false, error: 'Authentication failed' }
+    case LOGGED_IN:
+      return { ...state, fullLoading: false, user: action.payload};
+    case NOT_LOGGED_IN:
+    return { ...state, fullLoading: false};
     default:
       return state;
   }

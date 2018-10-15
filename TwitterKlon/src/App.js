@@ -8,8 +8,7 @@ import reducers from './reducers';
 import Router from './router';
 
 export default class App extends Component {
-
-  componentDidMount() {
+  componentWillMount() {
     const config = {
       apiKey: "AIzaSyAVeBc_11BrqNtUwaIUKfmsfIq_MoIEPK8",
       authDomain: "twitterklon-e9c7d.firebaseapp.com",

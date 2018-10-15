@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
-import { Input, MyButton } from './common';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { Input, MyButton, Spinner } from './common';
+import { emailChanged, passwordChanged, loginUser, isLoggedIn } from '../actions';
 
 class LoginForm extends Component {
+
+  componentDidMount() {
+    if (this.props.fullLoading) {
+      this.props.isLoggedIn();
+    }
+  }
 
   onButtonClicked() {
     const { email, password } = this.props;
@@ -22,7 +28,13 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { error, loading } = this.props;
+    const { error, loading, fullLoading } = this.props;
+
+    if (fullLoading) {
+      return (
+        <Spinner />
+      )
+    }
 
     const errorMsg = error ? (
       <Text style={styles.errorText}>
@@ -69,11 +81,11 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  const { email, password, loading, error } = state.auth;
+  const { email, password, loading, error, fullLoading } = state.auth;
   return {
-    email, password, loading, error
+    email, password, loading, error, fullLoading
   }
 }
 
 export default connect(mapStateToProps,
-    { emailChanged, passwordChanged, loginUser })(LoginForm);
+    { emailChanged, passwordChanged, loginUser, isLoggedIn })(LoginForm);

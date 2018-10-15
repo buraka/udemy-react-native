@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/loginForm';
@@ -14,7 +15,6 @@ const RouterComp = () => {
                  component={LoginForm}
                  title='Login'
                  hideNavBar={true}
-                 initial
                  />
         </Scene>
         <Scene key='main'>
@@ -23,7 +23,11 @@ const RouterComp = () => {
                  title='Tweets'
                  rightTitle='New'
                  onRight={() => Actions.newTweet()}
-                 initial
+                 onLeft={() => {
+                  firebase.auth().signOut();
+                  Actions.auth();
+                 }}
+                 leftTitle='Logout'
                  />
            <Scene key='newTweet'
                   component={NewTweet}
