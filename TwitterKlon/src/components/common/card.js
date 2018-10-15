@@ -11,13 +11,13 @@ const Card = (props) => {
 
 const styles = StyleSheet.create({
   cardWrapper: {
-    height: 50,
+    height: 87,
     margin: 10,
     borderWidth: 1,
     borderRadius: 2,
     borderColor: '#dddddd',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
   }
 });
 

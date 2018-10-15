@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import { Spinner } from './spinner';
 
-const MyButton = ({ spinner, title, onPress, color }) => {
+const MyButton = ({ spinner, title, onPress, color, backgroundColor }) => {
   const content = spinner ? (
     <Spinner />
   ) : (
@@ -11,8 +11,12 @@ const MyButton = ({ spinner, title, onPress, color }) => {
             title={title}/>
   )
 
+  let { buttonWrapper } = styles;
+  buttonWrapper = { ...buttonWrapper,
+    backgroundColor: backgroundColor || '#EFF0EE'};
+
   return (
-    <View style={styles.buttonWrapper}>
+    <View style={buttonWrapper}>
       {content}
     </View>
   )
@@ -24,8 +28,7 @@ const styles = StyleSheet.create({
     height: 49,
     borderRadius: 10,
     justifyContent: 'center',
-    fontSize: 18,
-    backgroundColor: '#EFF0EE'
+    fontSize: 18
   }
 })
 

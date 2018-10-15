@@ -17,14 +17,12 @@ const RouterComp = () => {
                  initial
                  />
         </Scene>
-        <Scene key='main' initial>
+        <Scene key='main'>
           <Scene key='tweets'
                  component={Tweets}
                  title='Tweets'
                  rightTitle='New'
                  onRight={() => Actions.newTweet()}
-                 leftTitle='Update'
-                 onLeft={() => Actions.updateTweet()}
                  initial
                  />
            <Scene key='newTweet'
