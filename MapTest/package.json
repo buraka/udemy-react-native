@@ -1,0 +1,26 @@
+{
+  "name": "MapTest",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "postinstall": "./node_modules/react-native-maps/enable-google-maps REPLACE_ME_RELATIVE_PATH_TO_GOOGLE_MAPS_INSTALL"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "asap": "^2.0.6",
+    "react": "16.6.0-alpha.8af6728",
+    "react-native": "0.57.4",
+    "react-native-maps": "^0.22.0"
+  },
+  "devDependencies": {
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.48.3",
+    "react-test-renderer": "16.6.0-alpha.8af6728"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
